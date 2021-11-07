@@ -69,7 +69,7 @@ public class CameraActivity extends FragmentActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_camera);
-        getSookmyungMarkertItem();
+        loadSookmyungMarkertItem();
 
         FragmentManager fm = getSupportFragmentManager();
         MapFragment mapFragment = (MapFragment)fm.findFragmentById(R.id.map);
@@ -92,7 +92,7 @@ public class CameraActivity extends FragmentActivity implements OnMapReadyCallba
                 new FusedLocationSource(this, PERMISSION_REQUEST_CODE);
     }
 
-    private void getSookmyungMarkertItem() {
+    private void loadSookmyungMarkertItem() {
         SookmyungMarkerInterface sookmyungMarkerInterface = RetrofitClient.getClient().create(SookmyungMarkerInterface.class);
         Call <JsonObject> call = sookmyungMarkerInterface.getSookmyungMarkerResult();
         call.enqueue(new Callback<JsonObject>() {
